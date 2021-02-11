@@ -2,8 +2,7 @@ from django.db import models
 
 
 class Who(models.Model):
-    who = models.CharField(max_length=250,
-                              null=False, blank=False, default='')
+    who = models.CharField(max_length=250, null=False, blank=False, default='')
 
     def __str__(self):
         return f"Who: {self.who}"
@@ -11,11 +10,7 @@ class Who(models.Model):
 
 class Activity(models.Model):
 
-    status_choice = [
-    ("TODO", "To do"),
-    ("DOING", "Doing"),
-    ("DONE", "Done")
-    ]
+    status_choice = [("TODO", "To do"), ("DOING", "Doing"), ("DONE", "Done")]
 
     title = models.CharField(max_length=150, null=False, blank=False)
     description = models.TextField(null=False, blank=False)
@@ -25,4 +20,5 @@ class Activity(models.Model):
     status = models.CharField(max_length=5, choices=status_choice)
 
     def __str__(self):
-        return f"Activity: {self.title} | End date: {self.end_date} | Responsible: {self.who}"
+        return f"Activity: {self.title} | End date: {self.end_date} \
+            | Responsible: {self.who}"
